@@ -1,1 +1,8 @@
- 
+.ContactList_item {
+  padding: 5px;
+}
+li {
+  display: inline-flex;
+  justify-content: space-between;
+  min-width: 100%;
+}
