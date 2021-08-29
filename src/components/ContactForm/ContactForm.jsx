@@ -8,7 +8,6 @@ class ContactForm extends Component {
       <div className="ContactFormWrapper">
         <form>
           <p>
-            {' '}
             <label htmlFor="">
               Name
               <input
@@ -30,8 +29,9 @@ class ContactForm extends Component {
                 title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
                 required
               />
-            </label>{' '}
+            </label>
           </p>
+          <button>Add</button>
         </form>
       </div>
     );

@@ -9,6 +9,7 @@ const ContactList = ({ contacts }) => {
         {contacts.map((contact, i) => (
           <li key={i}>
             {contact.name} {contact.number}
+            <button type="button">Delete</button>
           </li>
         ))}
       </ol>
