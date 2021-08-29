@@ -2,14 +2,16 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 //import { Test } from './Contacts.styles';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, deleteContact }) => {
   return (
     <div className="ContactListWrapper">
       <ol>
-        {contacts.map((contact, i) => (
+        {contacts.map(({ name, number, id }, i) => (
           <li key={i}>
-            {contact.name} {contact.number}
-            <button type="button">Delete</button>
+            {name} {number}
+            <button type="button" onClick={() => deleteContact(id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ol>

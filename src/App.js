@@ -3,7 +3,7 @@ import Container from 'components/Container/Container';
 import Section from 'components/Section/Section';
 //styles
 import './App.css';
-import Contacts from 'components/ContactList/ContactList';
+import ContactList from 'components/ContactList/ContactList';
 import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
 //components
@@ -22,6 +22,14 @@ class App extends Component {
     number: '',
   };
 
+  deleteContact = contactId => {
+    const state = this.state;
+    const visibleContacts = state.contacts.filter(
+      contact => contact.id !== contactId,
+    );
+    this.setState({ contacts: visibleContacts });
+    return visibleContacts;
+  };
   render() {
     const { contacts, name, number } = this.state;
     return (
@@ -34,7 +42,10 @@ class App extends Component {
           <Filter />
 
           <Section title="Contacts">
-            <Contacts contacts={contacts} />
+            <ContactList
+              contacts={contacts}
+              deleteContact={this.deleteContact}
+            />
           </Section>
         </Container>
       </div>
