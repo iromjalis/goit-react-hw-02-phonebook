@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import Container from 'components/Container/Container';
-import Section from 'components/Section/Section';
 //styles
 import './App.css';
 import ContactList from 'components/ContactList/ContactList';
@@ -36,7 +35,7 @@ class App extends Component {
       <div className="App">
         <Container>
           <h1>Phonebook</h1>
-          <ContactForm />
+          <ContactForm name={name} number={number} />
 
           <h2>Contacts</h2>
           <Filter />
