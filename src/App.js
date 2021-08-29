@@ -41,12 +41,7 @@ class App extends Component {
           <h2>Contacts</h2>
           <Filter />
 
-          <Section title="Contacts">
-            <ContactList
-              contacts={contacts}
-              deleteContact={this.deleteContact}
-            />
-          </Section>
+          <ContactList contacts={contacts} deleteContact={this.deleteContact} />
         </Container>
       </div>
     );
