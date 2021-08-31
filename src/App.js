@@ -2,12 +2,13 @@ import { Component } from 'react';
 import Container from 'components/Container/Container';
 //styles
 import './App.css';
+//components
 import ContactList from 'components/ContactList/ContactList';
 import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
-//components
 
-//file
+//helpers
+import shortid from 'shortid';
 
 class App extends Component {
   state = {
@@ -29,9 +30,26 @@ class App extends Component {
   };
 
   handleSubmit = data => {
-    console.log('data', data);
+    const { name, number } = data;
+    const contact = {
+      id: shortid.generate(),
+      name,
+      number,
+    };
+    console.log('contact', contact);
 
-    this.setState({ ...data });
+    this.setState(prevState => ({
+      todos: prevState.todos.map(todo => {
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+
+        return todo;
+      }),
+    }));
   };
   render() {
     const { contacts } = this.state;
