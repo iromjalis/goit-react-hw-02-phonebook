@@ -18,6 +18,7 @@ class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: '',
   };
 
   deleteContact = contactId => {
@@ -37,13 +38,21 @@ class App extends Component {
       number,
     };
     console.log('contact', contact);
-    // this.setState({ contact });
+
     this.setState(({ contacts }) => ({
       contacts: [contact, ...contacts],
     }));
   };
+
+  onFilter = filter => {
+    console.log('filter', filter);
+    this.setState({ filter });
+  };
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()),
+    );
     return (
       <div className="App">
         <Container>
@@ -51,9 +60,12 @@ class App extends Component {
           <ContactForm onSubmit={this.addNewContact} />
 
           <h2>Contacts</h2>
-          <Filter />
+          <Filter filter={filter} onFilter={this.onFilter} />
 
-          <ContactList contacts={contacts} deleteContact={this.deleteContact} />
+          <ContactList
+            contacts={visibleContacts}
+            deleteContact={this.deleteContact}
+          />
         </Container>
       </div>
     );
