@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-//import { Test } from './ContactForm.css';
 
 class ContactForm extends Component {
   state = {
@@ -61,13 +59,5 @@ class ContactForm extends Component {
     );
   }
 }
-
-ContactForm.propTypes = {
-  // bla: PropTypes.string,
-};
-
-ContactForm.defaultProps = {
-  // bla: 'test',
-};
 
 export default ContactForm;
