@@ -29,7 +29,7 @@ class ContactForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <p>
             <label htmlFor="">
-              Name
+              Name&emsp;
               <input
                 onChange={this.handleChange}
                 type="text"
@@ -43,7 +43,7 @@ class ContactForm extends Component {
           </p>
           <p>
             <label htmlFor="">
-              Phone
+              Phone&emsp;
               <input
                 onChange={this.handleChange}
                 type="tel"
