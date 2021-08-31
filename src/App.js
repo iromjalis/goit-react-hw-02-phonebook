@@ -29,7 +29,7 @@ class App extends Component {
     return visibleContacts;
   };
 
-  handleSubmit = data => {
+  addNewContact = data => {
     const { name, number } = data;
     const contact = {
       id: shortid.generate(),
@@ -37,28 +37,18 @@ class App extends Component {
       number,
     };
     console.log('contact', contact);
-
-    // this.setState(prevState => ({
-    //   todos: prevState.todos.map(todo => {
-    //     if (todo.id === todoId) {
-    //       return {
-    //         ...todo,
-    //         completed: !todo.completed,
-    //       };
-    //     }
-
-    //     return todo;
-    //   }),
-    // }));
+    // this.setState({ contact });
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
   };
-
   render() {
     const { contacts } = this.state;
     return (
       <div className="App">
         <Container>
           <h1>Phonebook</h1>
-          <ContactForm onSubmit={this.handleSubmit} />
+          <ContactForm onSubmit={this.addNewContact} />
 
           <h2>Contacts</h2>
           <Filter />
