@@ -31,13 +31,18 @@ class App extends Component {
   };
 
   addNewContact = data => {
+    const { contacts } = this.state;
     const { name, number } = data;
     const contact = {
       id: shortid.generate(),
       name,
       number,
     };
-    console.log('contact', contact);
+
+    if (contacts.some(({ name }) => name === contact.name)) {
+      alert(`Sorry, ${name} already exists`);
+      return;
+    }
 
     this.setState(({ contacts }) => ({
       contacts: [contact, ...contacts],
